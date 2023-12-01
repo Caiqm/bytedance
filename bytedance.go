@@ -205,8 +205,18 @@ func (c *Client) decode(data []byte, method string, result interface{}) (err err
 	}
 	// 判断是否成功
 	var errNBytes = raw[kFieldErrNo]
+	var errCBytes = raw[kFieldErrCode]
+	// err_no错误
 	if len(errNBytes) > 0 && string(errNBytes) != "0" {
 		var rErr Error
+		if err = json.Unmarshal(data, &rErr); err != nil {
+			return
+		}
+		return rErr
+	}
+	// err_code错误
+	if len(errCBytes) > 0 && string(errCBytes) != "0" {
+		var rErr Err
 		if err = json.Unmarshal(data, &rErr); err != nil {
 			return
 		}

@@ -18,6 +18,7 @@ const (
 	kFieldNonce        = "nonce"
 	kFieldMsg          = "msg"
 	kFieldErrNo        = "err_no"
+	kFieldErrCode      = "err_code"
 )
 
 type Param interface {
@@ -76,4 +77,14 @@ func (e Error) Error() string {
 		errMsg = e.ErrMsg
 	}
 	return fmt.Sprintf("%d - %s", e.ErrNo, errMsg)
+}
+
+// Err 错误提示
+type Err struct {
+	ErrCode int64  `json:"err_code"`
+	ErrMsg  string `json:"err_msg"`
+}
+
+func (e Err) Error() string {
+	return fmt.Sprintf("%d - %s", e.ErrCode, e.ErrMsg)
 }
