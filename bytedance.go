@@ -26,6 +26,8 @@ type Client struct {
 	salt           string
 	token          string
 	host           string
+	privateKey     string
+	keyVersion     string
 	location       *time.Location
 	client         *http.Client
 	onReceivedData func(method string, data []byte)
@@ -56,6 +58,24 @@ func WithToken(token string) OptionFunc {
 	return func(c *Client) {
 		if token != "" {
 			c.token = token
+		}
+	}
+}
+
+// 设置应用私钥
+func WithPrivateKey(privateKey string) OptionFunc {
+	return func(c *Client) {
+		if privateKey != "" {
+			c.privateKey = privateKey
+		}
+	}
+}
+
+// 设置应用公钥版本
+func WithKeyVersion(keyVersion string) OptionFunc {
+	return func(c *Client) {
+		if keyVersion != "" {
+			c.keyVersion = keyVersion
 		}
 	}
 }
