@@ -160,7 +160,7 @@ type TradeRefundCreateQueryResponse struct {
 				NeedRefundAudit     int    `json:"need_refund_audit"`     // 是否需要退款审核，1-需要审核、2-不需要审核
 				RefundAuditDeadline int64  `json:"refund_audit_deadline"` // 退款审核的最后期限，过期无需审核，自动退款，13 位 unix 时间戳，精度：毫秒
 				DenyMessage         string `json:"deny_message"`          // 不同意退款信息，长度 <= 512 byte>
-			} `json:"merchant_audit_detail"`                      // 退款审核信息
+			} `json:"merchant_audit_detail"` // 退款审核信息
 			CreateAt          int64  `json:"create_at"`           // 退款创建时间，13位毫秒时间戳
 			RefundAt          int64  `json:"refund_at"`           // 退款时间，13位毫秒时间戳，只有已退款才有退款时间
 			RefundStatus      string `json:"refund_status"`       // 退款状态；退款中-PROCESSING、已退款-SUCCESS、退款失败-FAIL

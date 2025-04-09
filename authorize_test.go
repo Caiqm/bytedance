@@ -9,7 +9,7 @@ var client *Client
 
 func init() {
 	var err error
-	client, err = New("tt0e357888911ff21c", "42853449da3efe9e94020c05899b01ab786f8903", WithSalt(""))
+	client, err = New("", "", WithSalt(""))
 	if err != nil {
 		log.Fatalln(err)
 	}
