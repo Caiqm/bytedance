@@ -110,6 +110,10 @@ type GetUserPhoneNumber struct {
 	Code string `json:"code"` // 获取手机号的凭证code，通过前端getPhoneNumber组件获取
 }
 
+func (a GetUserPhoneNumber) NeedAccessToken() bool {
+	return true
+}
+
 // GetUserPhoneNumberRsp 获取用户手机号响应参数
 type GetUserPhoneNumberRsp struct {
 	Error
