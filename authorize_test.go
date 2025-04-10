@@ -44,3 +44,17 @@ func TestClient_GetPhoneNumber(t *testing.T) {
 	}
 	t.Logf("%v", rsp)
 }
+
+func TestClient_ClientToken(t *testing.T) {
+	t.Log("========== ClientToken ==========")
+	client.LoadOptionFunc(WithApiHost("https://open.douyin.com/oauth/client_token/"))
+	var p = ClientToken{}
+	p.GrantType = "client_credential"
+	p.ClientKey = ""
+	p.ClientSecret = ""
+	rsp, err := client.ClientToken(p)
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Logf("%v", rsp)
+}

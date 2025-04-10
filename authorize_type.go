@@ -32,10 +32,6 @@ func (a ClientToken) NeedSecret() bool {
 	return false
 }
 
-func (a ClientToken) ContentType() string {
-	return kContentTypeForm
-}
-
 // ClientTokenRsp 获取应用授权调用凭证响应参数
 type ClientTokenRsp struct {
 	Data struct {
