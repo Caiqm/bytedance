@@ -43,7 +43,7 @@ type ClientTokenRsp struct {
 		Description string `json:"description,omitempty"`  // 错误码描述
 		ErrorCode   int    `json:"error_code,omitempty"`   // 错误码
 		ExpiresIn   int    `json:"expires_in,omitempty"`   // client_token 接口调用凭证超时时间，单位（秒）
-	} `json:"data"` // client_token信息
+	} `json:"data"`                           // client_token信息
 	Message string `json:"message,omitempty"` // 请求响应
 	Extra   struct {
 		Logid string `json:"logid"` // 日志记录ID
@@ -102,4 +102,17 @@ type GetPhoneNumberRsp struct {
 type WatermarkData struct {
 	Appid     string `json:"appid"`
 	Timestamp int    `json:"timestamp"`
+}
+
+// GetUserPhoneNumber 获取用户手机号 https://developer.open-douyin.com/docs/resource/zh-CN/mini-app/develop/server/basic-abilities/log-in/get-phone-number
+type GetUserPhoneNumber struct {
+	Applet
+	Code string `json:"code"` // 获取手机号的凭证code，通过前端getPhoneNumber组件获取
+}
+
+// GetUserPhoneNumberRsp 获取用户手机号响应参数
+type GetUserPhoneNumberRsp struct {
+	Error
+	LogId string `json:"log_id"` // 抖音开放平台统一日志id
+	Data  string `json:"data"`   // 通过开发者在「抖音开放平台-控制台-找到对应的小程序-开发-开发配置」配置的应用公钥 进行RSA非对称加密后的密文数据，需要开发者通过对应的应用私钥进行解密。应用公私钥由开发者生成，并将公钥录入在「应用公钥」上，私钥由开发者保管。
 }
