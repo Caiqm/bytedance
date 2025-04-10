@@ -107,7 +107,8 @@ type WatermarkData struct {
 // GetUserPhoneNumber 获取用户手机号 https://developer.open-douyin.com/docs/resource/zh-CN/mini-app/develop/server/basic-abilities/log-in/get-phone-number
 type GetUserPhoneNumber struct {
 	Applet
-	Code string `json:"code"` // 获取手机号的凭证code，通过前端getPhoneNumber组件获取
+	AccessToken string `json:"access_token"` // 调用https://open.douyin.com/oauth/client_token/生成的token
+	Code        string `json:"code"`         // 获取手机号的凭证code，通过前端getPhoneNumber组件获取
 }
 
 func (a GetUserPhoneNumber) NeedAccessToken() bool {
