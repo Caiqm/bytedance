@@ -39,7 +39,7 @@ type ClientTokenRsp struct {
 		Description string `json:"description,omitempty"`  // 错误码描述
 		ErrorCode   int    `json:"error_code,omitempty"`   // 错误码
 		ExpiresIn   int    `json:"expires_in,omitempty"`   // client_token 接口调用凭证超时时间，单位（秒）
-	} `json:"data"`                           // client_token信息
+	} `json:"data"` // client_token信息
 	Message string `json:"message,omitempty"` // 请求响应
 	Extra   struct {
 		Logid string `json:"logid"` // 日志记录ID
