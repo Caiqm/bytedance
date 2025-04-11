@@ -63,7 +63,7 @@ func TestClient_TradeRefundQuery(t *testing.T) {
 	t.Logf("%+v", rsp)
 }
 
-// 通用交易系统
+// 通用交易系统支付
 func TestClient_TradeTransaction(t *testing.T) {
 	t.Log("========== TradeTransaction ==========")
 	client.LoadOptionFunc(WithKeyVersion(""), WithPrivateKey(""))
@@ -89,6 +89,20 @@ func TestClient_TradeTransaction(t *testing.T) {
 		},
 	}
 	rsp, err := client.TradeTransactionPay(p)
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Logf("%+v", rsp)
+}
+
+// 通用交易系统退款查询
+func TestClient_TradeRefundCreateQuery(t *testing.T) {
+	t.Log("========== TradeRefundCreateQuery ==========")
+	client.LoadOptionFunc(WithApiHost("https://open.douyin.com/api/trade_basic/v1/developer/refund_query/"))
+	var p = TradeRefundCreateQuery{}
+	p.RefundId = ""
+	p.AccessToken = ""
+	rsp, err := client.TradeRefundCreateQuery(p)
 	if err != nil {
 		t.Fatal(err)
 	}
